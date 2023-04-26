@@ -42,8 +42,8 @@ export class App extends Component {
     if (prevState.contacts !== this.state.contacts) {
       console.log('Відбулася зміна');
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-      console.log(prevState.contacts);
-      console.log(this.state.contacts);
+      console.log('prevState -', prevState.contacts);
+      console.log('this.state -', this.state.contacts);
     }
 
     // localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
