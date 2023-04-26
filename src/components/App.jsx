@@ -35,15 +35,18 @@ export class App extends Component {
       // (this.state.contacts = [...INITIAL_CONTACTS])
     }
   }
+
   componentDidUpdate(prevProps, prevState) {
     console.log('componentDidUpdate');
 
-    // if (prevState.contacts !== this.state.contacts) {
-    //   console.log('Відбулася зміна');
-    //   localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    // }
+    if (prevState.contacts !== this.state.contacts) {
+      console.log('Відбулася зміна');
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      console.log(prevState.contacts);
+      console.log(this.state.contacts);
+    }
 
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    // localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   }
 
   handleSubmit = event => {
