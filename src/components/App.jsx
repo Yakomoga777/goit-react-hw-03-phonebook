@@ -23,28 +23,18 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    console.log('componentDidMount');
     const savedContacts = localStorage.getItem('contacts');
-    // console.log(savedContacts);
+
     if (savedContacts != null) {
       this.setState({ contacts: JSON.parse(savedContacts) });
-      console.log(this.state.contacts);
-      // (this.state.contacts = [...savedContacts])
     } else {
       this.setState({ contacts: INITIAL_CONTACTS });
-      // (this.state.contacts = [...INITIAL_CONTACTS])
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
-
     if (prevState.contacts !== this.state.contacts) {
-      console.log('Відбулася зміна');
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-
-      console.log('prevState -', prevState.contacts);
-      console.log('this.state -', this.state.contacts);
     }
 
     // localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
@@ -74,7 +64,6 @@ export class App extends Component {
         },
       ],
     }));
-    console.log('Submit');
   };
 
   handleChangeFilter = event => {
@@ -88,25 +77,18 @@ export class App extends Component {
       item.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
     );
 
-    // console.log(filteredContacts);
-
     return filteredContacts;
   };
 
   //Метод видалення
   handleDelete = id => {
-    // const { contacts } = this.state;
     this.setState(prevState => ({
       contacts: this.state.contacts.filter(contact => contact.id !== id),
     }));
-    // console.log(contacts);
-    // console.log(this.prevState.conntacts);
-    // console.log(id);
   };
 
   // Функція рендеру:
   render() {
-    console.log('render');
     return (
       <ThemeProvider theme={theme}>
         <GlobalStyle />
