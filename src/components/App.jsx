@@ -36,8 +36,6 @@ export class App extends Component {
     if (prevState.contacts !== this.state.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
-
-    // localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   }
 
   handleSubmit = event => {
@@ -46,11 +44,11 @@ export class App extends Component {
     const name = form.elements.name.value;
     const number = form.elements.number.value;
 
-    const IncludesName = this.state.contacts.find(
+    const includesName = this.state.contacts.find(
       contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
     );
 
-    if (IncludesName) {
+    if (includesName) {
       alert(`${name} is already in contacts`);
       return;
     }
